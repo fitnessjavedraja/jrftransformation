@@ -35,6 +35,44 @@
     .mobile-menu.open { transform: translateX(0); }
     .price-strikethrough { text-decoration: line-through; opacity: 0.6; }
     input:focus, textarea:focus, select:focus { outline: none; box-shadow: 0 0 0 2px rgba(200, 160, 80, 0.4); }
+    /* Before/after: identical frames, full image visible, grid-safe columns */
+    .transform-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.625rem;
+      align-items: stretch;
+    }
+    @media (min-width: 640px) {
+      .transform-pair { gap: 0.75rem; }
+    }
+    .transform-slot { min-width: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .transform-label {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c8a050;
+    }
+    .transform-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      margin-inline: auto;
+      background: linear-gradient(180deg, #1c1c1c 0%, #141414 100%);
+      border-radius: 0.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(200, 160, 80, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+    }
+    .transform-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
   </style>
 </head>
 <body class="h-full">
@@ -203,36 +241,54 @@
         <div class="text-center mb-16">
           <p class="text-xs tracking-[0.4em] uppercase mb-4 text-[#c8a050]">Client Transformations</p>
           <h2 class="text-3xl md:text-5xl font-bold text-[#e8e0d4]" style="font-family: 'Playfair Display', serif;">Real Transformations. Real Results.</h2>
-          <p class="text-sm mt-4 text-[#a09882]">Replace the sample photos below with your real before and after images.</p>
+          <p class="text-sm mt-4 text-[#a09882]">Same portrait frame for every before and after so comparisons stay clear and aligned.</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.1)]">
-            <div class="grid grid-cols-2 gap-3 mb-4">
-              <div><p class="text-xs text-center mb-2 font-semibold text-[#c8a050]">Before</p><img src="./images/ayesha-before.svg" alt="Ayesha K. Before" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
-              <div><p class="text-xs text-center mb-2 font-semibold text-[#c8a050]">After</p><img src="./images/ayesha-after.svg" alt="Ayesha K. After" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <article class="transform-card p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.12)] flex flex-col">
+            <div class="transform-pair mb-5 flex-1">
+              <div class="transform-slot">
+                <span class="transform-label">Before</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/fbefore.jpeg" alt="Ayesha K. Before" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="transform-slot">
+                <span class="transform-label">After</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/fafter.jpeg" alt="Ayesha K. After" loading="lazy" decoding="async"></div>
+              </div>
             </div>
-            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Ayesha K. - 6 Months</p>
-            <p class="text-xs mb-4 text-[#a09882]">Lost 18 kg, gained strength</p>
-            <p class="text-sm italic leading-relaxed text-[#a09882]">"Javed didn't just give me a diet, he taught me how to enjoy my favorite foods while still losing fat."</p>
-          </div>
-          <div class="p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.1)]">
-            <div class="grid grid-cols-2 gap-3 mb-4">
-              <div><p class="text-xs text-center mb-2 text-[#a09882]">Before</p><img src="./images/bilal-before.svg" alt="Bilal R. Before" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
-              <div><p class="text-xs text-center mb-2 text-[#a09882]">After</p><img src="./images/bilal-after.svg" alt="Bilal R. After" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
+            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Marina K. - 3 Months</p>
+            <p class="text-xs mb-4 text-[#a09882]">Lost 20 kg, gained strength</p>
+            <p class="text-sm italic leading-relaxed text-[#a09882] mt-auto">"Javed didn't just give me a diet, he taught me how to enjoy my favorite foods while still losing fat."</p>
+          </article>
+          <article class="transform-card p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.12)] flex flex-col">
+            <div class="transform-pair mb-5 flex-1">
+              <div class="transform-slot">
+                <span class="transform-label">Before</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/before.jpeg" alt="Bilal R. Before" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="transform-slot">
+                <span class="transform-label">After</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/after.jpeg" alt="Bilal R. After" loading="lazy" decoding="async"></div>
+              </div>
             </div>
-            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Bilal R. - 4 Months</p>
-            <p class="text-xs mb-4 text-[#a09882]">Dropped 12% body fat, built muscle</p>
-            <p class="text-sm italic leading-relaxed text-[#a09882]">"The 1:1 coaching calls kept me accountable every week. The workout plans are practical and actually fun."</p>
-          </div>
-          <div class="p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.1)]">
-            <div class="grid grid-cols-2 gap-3 mb-4">
-              <div><p class="text-xs text-center mb-2 text-[#a09882]">Before</p><img src="./images/sana-before.svg" alt="Sana M. Before" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
-              <div><p class="text-xs text-center mb-2 text-[#a09882]">After</p><img src="./images/sana-after.svg" alt="Sana M. After" loading="lazy" class="w-full h-48 object-cover rounded-sm bg-[#222]"></div>
+            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Khubab K. - 4 Months</p>
+            <p class="text-xs mb-4 text-[#a09882]">Lost 25 kg, gained strength</p>
+            <p class="text-sm italic leading-relaxed text-[#a09882] mt-auto">"The 1:1 coaching calls kept me accountable every week. The workout plans are practical and actually fun."</p>
+          </article>
+          <article class="transform-card p-6 rounded-sm bg-[#111] border border-[rgba(200,160,80,0.12)] flex flex-col">
+            <div class="transform-pair mb-5 flex-1">
+              <div class="transform-slot">
+                <span class="transform-label">Before</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/saadbefore.jpeg" alt="Sana M. Before" loading="lazy" decoding="async"></div>
+              </div>
+              <div class="transform-slot">
+                <span class="transform-label">After</span>
+                <div class="transform-frame"><img class="transform-photo" src="./assets/saadafter.jpeg" alt="Sana M. After" loading="lazy" decoding="async"></div>
+              </div>
             </div>
-            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Sana M. - 8 Months</p>
-            <p class="text-xs mb-4 text-[#a09882]">Lost 15 kg, ran first 5K</p>
-            <p class="text-sm italic leading-relaxed text-[#a09882]">"The flexible nutrition approach was the game-changer. I never felt deprived."</p>
-          </div>
+            <p class="text-sm font-bold mb-1 text-[#e8e0d4]">Saad M. - 4 Months</p>
+            <p class="text-xs mb-4 text-[#a09882]">Lost 18 kg, ran first 5K</p>
+            <p class="text-sm italic leading-relaxed text-[#a09882] mt-auto">"The flexible nutrition approach was the game-changer. I never felt deprived."</p>
+          </article>
         </div>
       </div>
     </section>
