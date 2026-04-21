@@ -1,0 +1,32 @@
+{
+  "name": "jrftransformation",
+  "version": "1.0.0",
+  "description": "This is a standalone version of the Canva-generated site, prepared to run outside Canva and deploy on Netlify.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitnessjavedraja/jrftransformation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/fitnessjavedraja/jrftransformation/issues"
+  },
+  "homepage": "https://github.com/fitnessjavedraja/jrftransformation#readme",
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.9"
+  }
+}
